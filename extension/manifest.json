@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Earn Your Scroll",
+  "version": "1.0.0",
+  "description": "Productivity companion — turns distracting sites gray while you work.",
+  "permissions": ["tabs", "storage", "alarms", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_title": "Earn Your Scroll"
+  }
+}

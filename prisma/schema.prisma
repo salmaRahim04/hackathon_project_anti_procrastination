@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Session {
+  id              String    @id @default(cuid())
+  taskDescription String
+  plannedMinutes  Int
+  actualMinutes   Int       @default(0)
+  completed       Boolean   @default(false)
+  earnedMinutes   Int       @default(0)
+  mood            Int?
+  projectId       String?
+  taskId          String?
+  createdAt       DateTime  @default(now())
+  completedAt     DateTime?
+}
+
+model ScrollBank {
+  id          String   @id @default(cuid())
+  totalEarned Int      @default(0)
+  totalSpent  Int      @default(0)
+  balance     Int      @default(0)
+  updatedAt   DateTime @updatedAt
+}
+
+model Streak {
+  id             String    @id @default(cuid())
+  currentStreak  Int       @default(0)
+  longestStreak  Int       @default(0)
+  lastActiveDate DateTime?
+  multiplier     Float     @default(1.0)
+}
+
+model SpendSession {
+  id           String   @id @default(cuid())
+  minutesSpent Int
+  createdAt    DateTime @default(now())
+}
+
+model BlockedSite {
+  id        String   @id @default(cuid())
+  domain    String   @unique
+  name      String
+  createdAt DateTime @default(now())
+}
+
+model Project {
+  id        String   @id @default(cuid())
+  name      String
+  emoji     String   @default("📋")
+  color     String   @default("#00E5FF")
+  createdAt DateTime @default(now())
+}
+
+model Task {
+  id           String    @id @default(cuid())
+  projectId    String?
+  title        String
+  done         Boolean   @default(false)
+  doneAt       DateTime?
+  minutesSpent Int       @default(0)
+  sessions     Int       @default(0)
+  createdAt    DateTime  @default(now())
+}
+
+model MayaQueue {
+  id          String    @id @default(cuid())
+  url         String
+  title       String    @default("")
+  summary     String?
+  status      String    @default("queued")  // queued | processing | done
+  createdAt   DateTime  @default(now())
+  completedAt DateTime?
+}
+
+model Gamification {
+  id                     String   @id @default(cuid())
+  xp                     Int      @default(0)
+  level                  Int      @default(1)
+  achievementsEarned     String   @default("[]")
+  consecutiveCompletions Int      @default(0)
+  dailyGoalMinutes       Int      @default(60)
+  updatedAt              DateTime @updatedAt
+}

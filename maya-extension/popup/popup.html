@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { width:240px;background:#0a0618;color:#fff;font-family:-apple-system,system-ui,sans-serif;padding:16px; }
+  h2 { font-size:15px;font-weight:700;margin-bottom:4px; }
+  p  { font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:12px;line-height:1.4; }
+  .row { display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.06); }
+  .row:last-child { border:none; }
+  .label { font-size:12px;color:rgba(255,255,255,0.7); }
+  .value { font-size:12px;font-weight:600;color:#c084fc; }
+  .dot { width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:5px; }
+  .dot.on  { background:#00FF88;box-shadow:0 0 6px #00FF88; }
+  .dot.off { background:rgba(255,255,255,0.2); }
+  a { color:#c084fc;font-size:11px;text-decoration:none;display:block;margin-top:12px;text-align:center; }
+  a:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+  <h2>🤖 Maya is watching</h2>
+  <p id="subtitle">Loading…</p>
+  <div class="row">
+    <span class="label"><span class="dot" id="session-dot"></span>Session</span>
+    <span class="value" id="session-val">—</span>
+  </div>
+  <div class="row">
+    <span class="label">💰 Banked</span>
+    <span class="value" id="bank-val">—</span>
+  </div>
+  <div class="row">
+    <span class="label">💻 VS Code</span>
+    <span class="value" id="vscode-val">—</span>
+  </div>
+  <a href="http://localhost:3005" target="_blank">Open Earn Your Scroll →</a>
+  <script src="popup.js"></script>
+</body>
+</html>

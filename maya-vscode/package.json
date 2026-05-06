@@ -1,0 +1,15 @@
+{
+  "name": "maya-twin",
+  "displayName": "Maya — Your Digital Twin",
+  "description": "Maya watches your VS Code activity and keeps you accountable.",
+  "version": "1.0.0",
+  "engines": { "vscode": "^1.74.0" },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "maya.status", "title": "Maya: Show Status" }
+    ]
+  }
+}
